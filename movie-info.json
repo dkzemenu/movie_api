@@ -1,11 +1,24 @@
 [
     {
         "title": "The Fast and The Furious",
-        "release date": "2001"
+        "release date": "2001",
+        "genre": {
+            "name": "action",
+            "description": "a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats"
+        }
     },
     {
         "title": "The Godfather",
-        "release date": "1972"
+        "release date": "1972",
+        "genre": {
+            "name": "drama",
+            "decription": "Drama Films are serious presentations or stories with settings or life situations that portray realistic characters in conflict with either themselves, others, or forces of nature"
+        },
+        "director": {
+            "name": "Francis",
+            "bio": "Francis Ford Coppola is an American film director, producer, and screenwriter. He is considered one of the major figures of the New Hollywood filmmaking movement of the 1960s and 1970s",
+            "birth year": "1939"
+        }
     },
     {
         "title": "The Shawshank Redemption",
