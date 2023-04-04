@@ -10,5 +10,101 @@
     <p>This achievement will build an API that gives the user access to information about different
         movies, directors, genres, etc.
     </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Business Logic</th>
+                <th>URL</th>
+                <th>HTTP Method</th>
+                <th>Query Params</th>
+                <th>Request Body</th>
+                <th>Response Body</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Return list of all movies</td>    
+                <td>/movies</td>    
+                <td>GET</td>    
+                <td>none</td>    
+                <td>none</td>    
+                <td>return JSON object with all movie data</td>    
+            </tr>       
+            
+            <tr>
+                <td>Return data about single movie by title</td>    
+                <td>/movies/:title</td>    
+                <td>GET</td>    
+                <td>:title</td>    
+                <td>none</td>    
+                <td>return JSON object with specific movie data</td>    
+            </tr>
+
+            <tr>
+                <td>Return data about a genre type by name/title</td>    
+                <td>/movies/genre/:genreName</td>    
+                <td>GET</td>    
+                <td>:genreName</td>    
+                <td>none</td>    
+                <td>return JSON object with specific movie genre type</td>    
+            </tr>
+
+            <tr>
+                <td>Return data about a director by name</td>    
+                <td>/movies/director/:directorName</td>    
+                <td>GET</td>    
+                <td>:directorName</td>    
+                <td>none</td>    
+                <td>return JSON object with details about a director</td>    
+            </tr>
+
+            <tr>
+                <td>Allow new users to register</td>    
+                <td>/users</td>    
+                <td>POST</td>    
+                <td>none</td>    
+                <td>New user input info (username,email and password) in JSON format</td>    
+                <td>New user info that was added in JSON format</td>    
+            </tr>
+
+            <tr>
+                <td>Allow users to update their username</td>    
+                <td>/user/:id</td>    
+                <td>POST</td>    
+                <td>:id</td>    
+                <td>Enter updated username in JSON format</td>    
+                <td>Updated user info (username) that was added in JSON format</td>    
+            </tr>
+
+            <tr>
+                <td>Allow users to add a movie to their favorites </td>    
+                <td>/users/:id/movieTitle</td>    
+                <td>POST</td>    
+                <td>:id :movieTitle</td>    
+                <td>none</td>    
+                <td>Confirmation that the movie title has been added to favorites</td>    
+            </tr>
+
+            <tr>
+                <td>Allow users to delete a movie from their favorites </td>    
+                <td>/users/:id/:movieTitle</td>    
+                <td>Delete</td>    
+                <td>:id :movieTitle</td>    
+                <td>none</td>    
+                <td>Confirmation that the movie title has been deleted favorites</td>    
+            </tr>
+
+            <tr>
+                <td>Allow users to deregister </td>    
+                <td>/users/:id</td>    
+                <td>Delete</td>    
+                <td>:id</td>    
+                <td>none</td>    
+                <td>Confirmation that user email has been removed</td>    
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
