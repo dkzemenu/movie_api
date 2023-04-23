@@ -44,18 +44,18 @@
 
             <tr>
                 <td>Return data about a genre type by name/title</td>    
-                <td>/movies/genre/:genreName</td>    
+                <td>/movies/genre_description/:Genre</td>    
                 <td>GET</td>    
-                <td>:genreName</td>    
+                <td>:Genre</td>    
                 <td>none</td>    
                 <td>return JSON object with specific movie genre type</td>    
             </tr>
 
             <tr>
                 <td>Return data about a director by name</td>    
-                <td>/movies/director/:directorName</td>    
+                <td>/movies/director_description/:Director</td>    
                 <td>GET</td>    
-                <td>:directorName</td>    
+                <td>:Director</td>    
                 <td>none</td>    
                 <td>return JSON object with details about a director</td>    
             </tr>
@@ -65,7 +65,7 @@
                 <td>/users</td>    
                 <td>POST</td>    
                 <td>none</td>    
-                <td>New user input info (username,email and password) in JSON format</td>    
+                <td>New user input info (username,email,password, birthday) in JSON format</td>    
                 <td>New user info that was added in JSON format</td>    
             </tr>       
             
@@ -80,36 +80,36 @@
 
             <tr>
                 <td>Allow users to update their username</td>    
-                <td>/user/:id</td>    
-                <td>POST</td>    
-                <td>:id</td>    
-                <td>Enter updated username in JSON format</td>    
+                <td>/users/:Username</td>    
+                <td>PUT</td>    
+                <td>:Username</td>    
+                <td>Enter updated info in JSON format (username, email, password, birthday)</td>    
                 <td>Updated user info (username) that was added in JSON format</td>    
             </tr>
 
             <tr>
                 <td>Allow users to add a movie to their favorites </td>    
-                <td>/users/:id/movieTitle</td>    
+                <td>/users/:Username/movies/:MovieID</td>    
                 <td>POST</td>    
-                <td>:id :movieTitle</td>    
+                <td>:Username :MovieID</td>    
                 <td>none</td>    
                 <td>Confirmation that the movie title has been added to favorites</td>    
             </tr>
 
             <tr>
                 <td>Allow users to delete a movie from their favorites </td>    
-                <td>/users/:id/:movieTitle</td>    
+                <td>/users/:Username/movies/:MovieID</td>    
                 <td>Delete</td>    
-                <td>:id :movieTitle</td>    
+                <td>:Username :MovieID</td>    
                 <td>none</td>    
                 <td>Confirmation that the movie title has been deleted favorites</td>    
             </tr>
 
             <tr>
                 <td>Allow users to deregister </td>    
-                <td>/users/:id</td>    
+                <td>/users/:Username</td>    
                 <td>Delete</td>    
-                <td>:id</td>    
+                <td>:Username</td>    
                 <td>none</td>    
                 <td>Confirmation that user email has been removed</td>    
             </tr>
