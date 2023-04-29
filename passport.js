@@ -15,7 +15,11 @@ passport.use(new LocalStrategy({
   Users.findOne({ Username: username })
   .then( user => callback(null, user))
   .catch(e => callback(null, false, {message: 'Incorrect username or password.'}));
-
+  
+  if (!user.validatePassword(password)) {
+    console.log('incorrect password');
+    return callback(null, false, {message: 'Incorrect Password'});
+  }
 }));
 
 passport.use(new JWTStrategy({
