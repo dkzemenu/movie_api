@@ -1,0 +1,4 @@
+{"_id":{"$oid":"643f2533bce8e0f568a9053c"},"Username":"Amanda","Password":"amandaiscool","email":"amandagirl@gmail.com","Birthday":{"$date":{"$numberLong":"-455241600000"}},"FavoriteMovies":[{"$oid":"64334b0abc05e8c65e384ece"}]}
+{"_id":{"$oid":"643f2580bce8e0f568a9053d"},"Name":"Catherine","Password":"catherineiscool","email":"catherinegirl@gmail.com","Birthday":{"$date":"1993-07-30T00:00:00Z"},"FavoriteMovies":[{"$oid":"643f1cf3bce8e0f568a90533"}],"Username":["Catherine"]}
+{"_id":{"$oid":"643f25bebce8e0f568a9053e"},"Name":"Jon","Password":"joniscool","email":"jonboy2@hotmail.com","Birthday":{"$date":"1997-03-21T00:00:00Z"},"FavoriteMovies":[{"$oid":"643f1de0bce8e0f568a90534"},{"$oid":"643f2266bce8e0f568a9053b"}],"Username":["Jon"]}
+{"_id":{"$oid":"643f262ebce8e0f568a9053f"},"Name":"mikey","Password":"mikeyiscool","email":"mikeyboy@gmail.com","Birthday":{"$date":"1994-04-03T00:00:00Z"},"FavoriteMovies":[{"$oid":"643f1e99bce8e0f568a90535"}],"Username":["Mikey"]}
