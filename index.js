@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js'); 
 const { check, validationResult} = require('express-validator');
+// const dotenv = require('dotenv');
+// dotenv.config();
 
 // mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true});
 
 // mongoose.connect('mongodb+srv://JosephHo7:Yellowminion2@myflixdb.dqwxcwl.mongodb.net/myFlixDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 
 
 const Movies = Models.Movie;
