@@ -7,19 +7,25 @@ let Users = Models.User,
   JWTStrategy = passportJWT.Strategy,
   ExtractJWT = passportJWT.ExtractJwt;
 
-passport.use(new LocalStrategy(User.authenticate())({
+passport.use(new LocalStrategy({
   usernameField: 'Username',
   passwordField: 'Password'
 }, (username, password, callback) => {
   console.log(username + '  ' + password);
   Users.findOne({ Username: username })
-  .then( user => callback(null, user))
+  .then( user => {
+
+      if (!user.validatePassword(password)) {
+    console.log('incorrect password');
+    return callback(null, false, {message: 'Incorrect Password'});
+  }
+    
+    return callback(null, user)
+  })
+
   .catch(e => callback(null, false, {message: 'Incorrect username or password.'}));
   
-  // if (!user.validatePassword(password)) {
-  //   console.log('incorrect password');
-  //   return callback(null, false, {message: 'Incorrect Password'});
-  // }
+
 }));
 
 passport.use(new JWTStrategy({
