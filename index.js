@@ -48,7 +48,7 @@ app.use(express.static('public'));
 
 //movie app landing page
 app.get('/', (req, res) => {
-    res.send('welcome to the movies');
+    res.send('welcome to the movies. This page is working');
 });
 
 //Return list of all movies
