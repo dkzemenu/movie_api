@@ -5,6 +5,9 @@ const jwt = require('jsonwebtoken'),
 
 require('./passport'); // Your local passport file
 
+//allow all CORS access
+const cors = require('cors'); 
+app.use(cors());
 
 let generateJWTToken = (user) => {
   return jwt.sign(user, jwtSecret, {
