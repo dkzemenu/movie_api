@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken'),
 require('./passport'); // Your local passport file
 
 //allow all CORS access
+const express = require('express'),
+    app = express()
 const cors = require('cors'); 
 app.use(cors());
 
