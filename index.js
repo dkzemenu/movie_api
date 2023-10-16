@@ -21,8 +21,12 @@ const express = require('express'),
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+//allow all CORS access
 const cors = require('cors'); 
 app.use(cors());
+
+// Use below code for CORS limited origin access
 // let allowedOrigins = ['http://localhost:8080', 'https://movieapi-lcrt.onrender.com/', 'http://localhost:1234']
 // app.use(cors({
 //     origin: (origin, callback) => {
