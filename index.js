@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //allow all CORS access
-// const cors = require('cors'); 
+const cors = require('cors'); 
 // app.use(cors());
 
 // Use below code for CORS limited origin access
