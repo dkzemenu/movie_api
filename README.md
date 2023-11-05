@@ -4,7 +4,7 @@ movies, directors, and genres. Users will be able to create new user profiles th
 Users will also be able to create a list of favorite movies that are unique to each user. 
 ## tech stack
 The tech used to create this project include 
--node.js
--Express
--Mongoose
--MongoDB Atlas
+- node.js
+- Express
+- Mongoose
+- MongoDB Atlas
