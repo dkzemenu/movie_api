@@ -1,3 +1,11 @@
+/**
+ * Overview: This API links to a database that contains information about users and a list of movies 
+ * that a user can access via the app. There are several endpoint calls that can be made that allow
+ * the user to access all movies, view details about a genre, director, or summary of a movie. 
+ * The user can also add or remove certain movies to a list of favorite movies specific to each user. 
+ * Finally, a user can create a new account, edit any account information, or delete an account.
+ */
+
 const mongoose = require('mongoose');
 const Models = require('./models.js'); 
 const { check, validationResult} = require('express-validator');
@@ -56,6 +64,21 @@ app.get('/', (req, res) => {
 });
 
 //Return list of all movies
+/**
+ * @description get all movies
+ * @name GET /movies
+ * * Response data format
+ * {
+ *   _id: ObjectID
+ *   "Title": "",
+ *   "Description": "",
+ *   "Genre": ObjectID,
+ *   "Director": [ObjectID],
+ *   "Actors": [ObjectID],
+ *   "ImagePath": "",
+ *   "Featured": Boolean,
+ * }
+ */
 app.get('/movies',
 // passport.authenticate('jwt', {session: false}), 
 (req, res) => {
@@ -70,6 +93,21 @@ app.get('/movies',
 });
 
 //Return data about single movie by title
+/**
+ * @description get single movie by title
+ * @name GET /movies/:Title
+ * * Response data format
+ * {
+ *   _id: ObjectID
+ *   "Title": "",
+ *   "Description": "",
+ *   "Genre": ObjectID,
+ *   "Director": [ObjectID],
+ *   "Actors": [ObjectID],
+ *   "ImagePath": "",
+ *   "Featured": Boolean,
+ * }
+ */
 app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req,res) => {
     Movies.findOne( {Title: req.params.Title})
     .then((movie) => {
@@ -82,6 +120,14 @@ app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req,r
 });
 
 //Return data about movie genre
+/**
+ * @description get movie genre details
+ * @name GET /movies/genre_description/:genre
+ * * Response data format
+ * {
+ *   "Genre": ObjectID
+ * }
+ */
 app.get('/movies/genre_description/:Genre', passport.authenticate('jwt', {session: false}),(req, res) => {
 	Movies.findOne({ 'Genre.Name': req.params.Genre })
 		.then((movie) => {
@@ -98,6 +144,14 @@ app.get('/movies/genre_description/:Genre', passport.authenticate('jwt', {sessio
 });
 
 //Return data about director
+/**
+ * @description get movie directoro details
+ * @name GET /movies/director_description/:director
+ * * Response data format
+ * {
+ *   "Director": [ObjectID]
+ * }
+ */
 app.get('/movies/director_description/:Director', passport.authenticate('jwt', {session: false}),(req, res) => {
 	Movies.findOne({ 'Director.Name': req.params.Director })
 		.then((movie) => {
@@ -114,14 +168,25 @@ app.get('/movies/director_description/:Director', passport.authenticate('jwt', {
 });
 
 //Create Allow new users to register
-/* We’ll expect JSON in this format
-{
+/**
+ * @description Allow a new user to register
+ * @name POST /users
+ * request data format
+* {
+    Username: string,
+    Password: string,
+    Email: string,
+    Birthday: date
+}
+*response data format
+* We’ll expect JSON in this format
+*{
   ID: Integer,
   Username: String,
   Password: String,
   Email: String,
   Birthday: Date
-}*/
+} */ 
 app.post('/users',[check('Username', 'Username is required').isLength({min: 5}), 
         check( 'Username', 'Username contains non alphanumeric characters - not allowed').isAlphanumeric(),
         check('Password', 'Password is required').not().isEmpty(),
@@ -171,6 +236,22 @@ app.get('/users', passport.authenticate('jwt', {session: false}), (req, res) => 
 });
 
 // get users by username
+/**
+ * @description Get a user info by username
+ * @name GET /users
+ * request data format
+* {
+    Username: string
+}
+*response data format
+* We’ll expect JSON in this format
+*{
+  ID: Integer,
+  Username: String,
+  Password: String,
+  Email: String,
+  Birthday: Date
+} */ 
 app.get('/users/:Username', passport.authenticate('jwt', {session: false}),(req, res) => {
     Users.findOne({Username: req.params.Username})
     .then((user) => {
@@ -182,13 +263,24 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}),(req,
     });
 });
 
-// Update a users info by Username
-// Well expect JSON in this format 
-// {Username: String, (required)
-// Password: String, (required)
-// Email: String, (required)
-// Birthday: Date
-// }
+/**
+* @description Update a users info by Username
+* @name PUT /user/:username
+*request data format
+* {
+    username: string,
+    password: string,
+    email: string,
+    birthday: date
+}
+*response data format
+*Well expect JSON in this format 
+*{Username: String, (required)
+Password: String, (required)
+Email: String, (required)
+Birthday: Date
+}
+ */
 app.put('/users/:Username', [check('Username', 'Username is required').isLength({min: 5}), 
 check( 'Username', 'Username contains non alphanumeric characters - not allowed').isAlphanumeric(),
 check('Password', 'Password is required').not().isEmpty(),
@@ -221,6 +313,10 @@ check('Email', 'Email does not appear to be valid').isEmail()
 });
 
 //Update Allow users to add a movie to their favorites
+/**
+ * @description allows a user to add a movie to their favorite movies list
+ * @name POST /users/:username/movies/:MovieID
+ */
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}),(req, res) =>{
     Users.findOneAndUpdate({ Username: req.params.Username}, {
         $push: {FavoriteMovies: req.params.MovieID}
@@ -240,6 +336,10 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {sessi
 });
 
 //Delete Allow users to delete a movie from their favorites
+/**
+ * @description allows a user to delete a movie from their favorites list
+ * @name DELETE /users/:username/movies/:MovieID
+ */
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}),(req, res) =>{
     Users.findOneAndUpdate({ Username: req.params.Username}, {
         $pull: {FavoriteMovies: req.params.MovieID}
@@ -259,6 +359,10 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {ses
 });
 
 //Delete Allow users to deregister
+/**
+ * @description allows a user to delete their user profile from the database
+ * @name DELETE /users/:username
+ */
 app.delete('/users/:Username',passport.authenticate('jwt', {session: false}), (req, res) => {
     Users.findOneAndRemove({Username: req.params.Username})
     .then ((user) => {
