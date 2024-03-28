@@ -63,7 +63,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Use below code for CORS limited origin access
-// let allowedOrigins = ['http://localhost:4200','http://localhost:8080', 'https://movieapi-lcrt.onrender.com/', 'http://localhost:1234']
+// let allowedOrigins = ['http://localhost:4200','http://localhost:8080', 'http://localhost:5000/', 'http://localhost:1234']
 // app.use(cors({
 //     origin: (origin, callback) => {
 //         if (!origin) return callback (null, true); 
@@ -429,18 +429,57 @@ app.listen(port, '0.0.0.0', () => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#DELETE/users/:username">DELETE /users/:username</a></li><li><a href="global.html#DELETE/users/:username/movies/:MovieID">DELETE /users/:username/movies/:MovieID</a></li><li><a href="global.html#GET/movies*Responsedataformat%257B_id:ObjectID%2522Title%2522:%2522%2522,%2522Description%2522:%2522%2522,%2522Genre%2522:ObjectID,%2522Director%2522:%255BObjectID%255D,%2522Actors%2522:%255BObjectID%255D,%2522ImagePath%2522:%2522%2522,%2522Featured%2522:Boolean,%257D">GET /movies* Response data format{  _id: ObjectID  "Title": "",  "Description": "",  "Genre": ObjectID,  "Director": [ObjectID],  "Actors": [ObjectID],  "ImagePath": "",  "Featured": Boolean,}</a></li><li><a href="global.html#GET/movies/:Title*Responsedataformat%257B_id:ObjectID%2522Title%2522:%2522%2522,%2522Description%2522:%2522%2522,%2522Genre%2522:ObjectID,%2522Director%2522:%255BObjectID%255D,%2522Actors%2522:%255BObjectID%255D,%2522ImagePath%2522:%2522%2522,%2522Featured%2522:Boolean,%257D">GET /movies/:Title* Response data format{  _id: ObjectID  "Title": "",  "Description": "",  "Genre": ObjectID,  "Director": [ObjectID],  "Actors": [ObjectID],  "ImagePath": "",  "Featured": Boolean,}</a></li><li><a href="global.html#GET/movies/director_description/:director*Responsedataformat%257B%2522Director%2522:%255BObjectID%255D%257D">GET /movies/director_description/:director* Response data format{  "Director": [ObjectID]}</a></li><li><a href="global.html#GET/movies/genre_description/:genre*Responsedataformat%257B%2522Genre%2522:ObjectID%257D">GET /movies/genre_description/:genre* Response data format{  "Genre": ObjectID}</a></li><li><a href="global.html#GET/usersrequestdataformat%257BUsername:string%257DresponsedataformatWe%25E2%2580%2599llexpectJSONinthisformat%257BID:Integer,Username:String,Password:String,Email:String,Birthday:Date%257D">GET /usersrequest data format{
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#DELETE/users/:username">DELETE /users/:username</a></li><li><a href="global.html#DELETE/users/:username/movies/:MovieID">DELETE /users/:username/movies/:MovieID</a></li><li><a href="global.html#GET/movies*Responsedataformat%257B_id:ObjectID%2522Title%2522:%2522%2522,%2522Description%2522:%2522%2522,%2522Genre%2522:ObjectID,%2522Director%2522:%255BObjectID%255D,%2522Actors%2522:%255BObjectID%255D,%2522ImagePath%2522:%2522%2522,%2522Featured%2522:Boolean,%257D">GET /movies
+* Response data format
+{
+  _id: ObjectID
+  "Title": "",
+  "Description": "",
+  "Genre": ObjectID,
+  "Director": [ObjectID],
+  "Actors": [ObjectID],
+  "ImagePath": "",
+  "Featured": Boolean,
+}</a></li><li><a href="global.html#GET/movies/:Title*Responsedataformat%257B_id:ObjectID%2522Title%2522:%2522%2522,%2522Description%2522:%2522%2522,%2522Genre%2522:ObjectID,%2522Director%2522:%255BObjectID%255D,%2522Actors%2522:%255BObjectID%255D,%2522ImagePath%2522:%2522%2522,%2522Featured%2522:Boolean,%257D">GET /movies/:Title
+* Response data format
+{
+  _id: ObjectID
+  "Title": "",
+  "Description": "",
+  "Genre": ObjectID,
+  "Director": [ObjectID],
+  "Actors": [ObjectID],
+  "ImagePath": "",
+  "Featured": Boolean,
+}</a></li><li><a href="global.html#GET/movies/director_description/:director*Responsedataformat%257B%2522Director%2522:%255BObjectID%255D%257D">GET /movies/director_description/:director
+* Response data format
+{
+  "Director": [ObjectID]
+}</a></li><li><a href="global.html#GET/movies/genre_description/:genre*Responsedataformat%257B%2522Genre%2522:ObjectID%257D">GET /movies/genre_description/:genre
+* Response data format
+{
+  "Genre": ObjectID
+}</a></li><li><a href="global.html#GET/usersrequestdataformat%257BUsername:string%257DresponsedataformatWe%25E2%2580%2599llexpectJSONinthisformat%257BID:Integer,Username:String,Password:String,Email:String,Birthday:Date%257D">GET /users
+request data format
+{
     Username: string
-}response data formatWe’ll expect JSON in this format{
+}
+response data format
+We’ll expect JSON in this format
+{
   ID: Integer,
   Username: String,
   Password: String,
   Email: String,
   Birthday: Date
-}</a></li><li><a href="global.html#POST/loginrequestdataformat%257BUsername:string,Password:string%257Dresponsedataformat%257Buser:%257B_id:ObjectID,username:string,password:string,email:string,birthday:date,FavoriteMovies:%255BObjectID%255D%257D,token:string%257D">POST /loginrequest data format{
+}</a></li><li><a href="global.html#POST/loginrequestdataformat%257BUsername:string,Password:string%257Dresponsedataformat%257Buser:%257B_id:ObjectID,username:string,password:string,email:string,birthday:date,FavoriteMovies:%255BObjectID%255D%257D,token:string%257D">POST /login
+request data format
+{
   Username: string,
   Password: string
- }response data format{
+ }
+response data format
+{
    user: {
      _id: ObjectID,
      username: string,
@@ -450,23 +489,33 @@ app.listen(port, '0.0.0.0', () => {
      FavoriteMovies: [ObjectID]
    },
    token: string
- }</a></li><li><a href="global.html#POST/usersrequestdataformat%257BUsername:string,Password:string,Email:string,Birthday:date%257DresponsedataformatWe%25E2%2580%2599llexpectJSONinthisformat%257BID:Integer,Username:String,Password:String,Email:String,Birthday:Date%257D">POST /usersrequest data format{
+ }</a></li><li><a href="global.html#POST/usersrequestdataformat%257BUsername:string,Password:string,Email:string,Birthday:date%257DresponsedataformatWe%25E2%2580%2599llexpectJSONinthisformat%257BID:Integer,Username:String,Password:String,Email:String,Birthday:Date%257D">POST /users
+request data format
+{
     Username: string,
     Password: string,
     Email: string,
     Birthday: date
-}response data formatWe’ll expect JSON in this format{
+}
+response data format
+We’ll expect JSON in this format
+{
   ID: Integer,
   Username: String,
   Password: String,
   Email: String,
   Birthday: Date
-}</a></li><li><a href="global.html#POST/users/:username/movies/:MovieID">POST /users/:username/movies/:MovieID</a></li><li><a href="global.html#PUT/user/:usernamerequestdataformat%257Busername:string,password:string,email:string,birthday:date%257DresponsedataformatWellexpectJSONinthisformat%257BUsername:String,(required)Password:String,(required)Email:String,(required)Birthday:Date%257D">PUT /user/:usernamerequest data format{
+}</a></li><li><a href="global.html#POST/users/:username/movies/:MovieID">POST /users/:username/movies/:MovieID</a></li><li><a href="global.html#PUT/user/:usernamerequestdataformat%257Busername:string,password:string,email:string,birthday:date%257DresponsedataformatWellexpectJSONinthisformat%257BUsername:String,(required)Password:String,(required)Email:String,(required)Birthday:Date%257D">PUT /user/:username
+request data format
+{
     username: string,
     password: string,
     email: string,
     birthday: date
-}response data formatWell expect JSON in this format {Username: String, (required)
+}
+response data format
+Well expect JSON in this format 
+{Username: String, (required)
 Password: String, (required)
 Email: String, (required)
 Birthday: Date

@@ -8,8 +8,4 @@ The tech used to create this project include
 - Express
 - Mongoose
 - MongoDB Atlas
-## How to use
-To use this API, start by cloning this repository. Then install NPM package manager and install any dependancies. To take a look at this API in use,
-there are two front end codes that I created here that use this API. 
-- React: https://github.com/JosephHo7/myFlix-client
-- Angular: https://github.com/JosephHo7/myFlix-Angular-Client
+
