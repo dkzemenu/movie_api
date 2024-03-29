@@ -35,9 +35,9 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     uuid = require('uuid');
 
-    app.use(bodyParser.json({limit: '50mb', extended: true}));
-    app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
-    app.use(bodyParser.text({ limit: '200mb' }));
+app.use(bodyParser.json({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
+app.use(bodyParser.text({ limit: '200mb' }));
 //allow all CORS access
 const cors = require('cors');
 app.use(cors());
@@ -391,7 +391,10 @@ app.post('/movies', passport.authenticate('jwt', { session: false }), async (req
     const { Title, Description, Genre, Director, Actors, ImageData, Featured } = req.body;
 
     // Create a buffer from the base64-encoded image data
-    const imageBuffer = Buffer.from(ImageData, 'base64');
+    const base64String = ImageData.replace(/^data:image\/\w+;base64,/, '');
+
+    const imageBuffer = Buffer.from(base64String, 'base64');
+
     const objectKey = `${uuidv4()}-${Date.now()}.png`;
 
     // Define the parameters for uploading the image to S3
