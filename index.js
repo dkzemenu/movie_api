@@ -438,7 +438,20 @@ app.post('/movies', passport.authenticate('jwt', { session: false }), async (req
     }
 });
 
-
+app.delete('/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Movies.findOneAndRemove({ _id: req.params.MovieID })
+        .then((movie) => {
+            if (!movie) {
+                res.status(400).send(req.params.MovieID + ' was not found');
+            } else {
+                res.status(200).send(req.params.MovieID + ' was deleted forever');
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+})
 
 //error handling
 app.use((err, req, res, next) => {
